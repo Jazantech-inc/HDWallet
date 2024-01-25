@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>HDWallet.Api</RootNamespace>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(MSBuildThisFileName).xml</DocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.2-*" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HDWallet.Tron\HDWallet.Tron.csproj" />
+    <ProjectReference Include="..\HDWallet.Core\HDWallet.Core.csproj" />
+    <ProjectReference Include="..\HDWallet.Secp256k1\HDWallet.Secp256k1.csproj" />
+    <ProjectReference Include="..\HDWallet.Avalanche\HDWallet.Avalanche.csproj" />
+    <ProjectReference Include="..\HDWallet.Polkadot\HDWallet.Polkadot.csproj" />
+    <ProjectReference Include="..\HDWallet.FileCoin\HDWallet.FileCoin.csproj" />
+    <ProjectReference Include="..\HDWallet.Bitcoin\HDWallet.Bitcoin.csproj" />
+  </ItemGroup>
+
+</Project>

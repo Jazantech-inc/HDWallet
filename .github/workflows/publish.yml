@@ -1,0 +1,41 @@
+name: Publish Packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+          submodules: recursive
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: | 
+          3.1.x
+          5.0.x
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test HDWallet.sln --no-restore --verbosity normal
+
+    - name: Pack
+      run: dotnet pack -c Release -o pack --no-restore --no-build
+
+    - name: Publish
+      run: dotnet nuget push pack/*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${GITHUB_TOKEN} --skip-duplicate -n true
+      env:
+        GITHUB_TOKEN: ${{ secrets.NUGET_API_KEY }}
+

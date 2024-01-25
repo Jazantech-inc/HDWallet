@@ -1,0 +1,54 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/fast-hls-tests/bin/Debug/net5.0/fast-hls-tests.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/fast-hls-tests",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        },
+        {
+            "name": "Debug HDWallet Api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-api",
+            "program": "${workspaceFolder}/src/HDWallet.Api/bin/Debug/netcoreapp3.1/HDWallet.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/HDWallet.Api",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "env": {
+                "Mnemonic": "wire sort once settle balcony bright awkward pottery derive noodle absorb combine quick account cluster dash material yard people layer fold royal add learn",
+                "AccountHDKey":"xprv9yHMs8P1hYrzgiR5NAURyoEJ28r5h7ZxVD6TsQ9tGRw8y9YngCdBHES4Pumr3WBUDAKokniiYyYKgQuTYSE8BTaKj6grYir3N2A36jXer1U"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}/swagger",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}/swagger",
+                },
+                "osx": {
+                    "command": "open"
+                },      
+                "linux": {
+                    "command": "xdg-open"
+                }       
+            },  
+        }
+    ]
+}
